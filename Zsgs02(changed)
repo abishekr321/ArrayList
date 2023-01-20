@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+public class Zsgs02 {
+	public static void main(String[] args) {
+		int []input= {1,2,3,1,5};
+		int sum1=0;
+		for(int i=0;i<input.length;i++) {
+		   sum1=sum1+input[i];
+		}
+		int sum2=sum1/2;
+		int sum3=0;
+		ArrayList<Integer> arr1= new ArrayList<>();
+		ArrayList<Integer> arr2=new ArrayList<>();
+		for(int i=0;i<input.length;i++) {
+			sum3=sum3+input[i];
+			if(sum3<=sum2) {
+				arr1.add(input[i]);
+			}
+			if(sum3>sum2) {
+                 arr2.add(input[i]);
+				
+			}
+		}
+		System.out.println(arr1);
+		System.out.println(arr2);
+	}
+
+}
