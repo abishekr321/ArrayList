@@ -4,18 +4,24 @@ public class Zsgs04 {
 	 Scanner input= new Scanner(System.in);
 	 System.out.println("enter the target amount");
 	 int target=input.nextInt();
-	  int[] denomin= {1,2,5,10,20};
-	   System.out.println("Enter the frequency of coins {1,2,5,10,20}");
-	   int[] coins=new int[denomin.length];
-	   for(int i=0;i<denomin.length;i++) {
-		  coins[i]=input.nextInt();
-	   }
+	  int[] denomin= {1,2,5,10};
+	  int[] coins= {5,4,6,5};
 	  int calc=target;
+	  int calu=target;
+	  int k=denomin.length-1;
+	  int[]ans=new int[coins.length];
 	  int sum=0;
 	  for(int i=denomin.length-1;i>=0;i--) {
 		  if((calc>=denomin[i])&&coins[i]>0) {
-		    calc=calc-(coins[i]*denomin[i]);
-		    sum=sum+coins[i];
+			 int count=calc/denomin[i];
+			 if(count >coins[i]) {
+				 count=coins[i];
+			 }
+			calc=target-(count*denomin[i]);
+			target=calc;
+			ans[k]=count;
+		    sum=sum+count;
+		    k--;
 		    if(calc==0) {
 		    	break;
 		    }
@@ -24,12 +30,15 @@ public class Zsgs04 {
 		  }
 		 
 	  }
-	  if(calc>0) {
-		  System.out.println(-1);
+	  for(int i=0;i<denomin.length;i++) {
+		  System.out.println(denomin[i]+" X "+ans[i]);
 	  }
-	  else {
-	  System.out.println(sum);}
-	  input.close();
-	  	}
+	  if(calc>0) {
+	  System.out.println(-1);
+	 }
+	  {
+	 System.out.println(sum);}
+	 input.close();
+	 }
 
 }
